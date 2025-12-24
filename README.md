@@ -79,3 +79,4 @@ npm run dev
 - [セットアップ手順](./docs/setup.md)
 - [開発ガイド](./docs/development.md)
 - [アーキテクチャ](./docs/architecture.md)
+- [API使用ガイド](./docs/api-usage.md)
