@@ -1,0 +1,24 @@
+// Vuetify SCSS変数のカスタマイズ
+// https://vuetifyjs.com/en/features/sass-variables/
+
+@use 'vuetify/settings' with (
+  // ボーダー半径のカスタマイズ
+  $border-radius-root: 4px,
+
+  // フォント設定
+  $body-font-family: (
+    'Roboto',
+    'Noto Sans JP',
+    sans-serif,
+  ),
+
+  // コンテナ幅
+  $container-max-widths: (
+    'xs': null,
+    'sm': null,
+    'md': 900px,
+    'lg': 1200px,
+    'xl': 1400px,
+    'xxl': 1600px,
+  )
+);

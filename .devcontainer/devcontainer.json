@@ -1,0 +1,24 @@
+{
+  "name": "template-vuetify",
+  "dockerComposeFile": ["../compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/home/nodeuser/app",
+  "remoteUser": "nodeuser",
+  "overrideCommand": true,
+  "runServices": ["app"],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Vue.volar",
+        "editorconfig.editorconfig",
+        "eamodio.gitlens",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "antfu.iconify"
+      ],
+      "settings": {
+        "typescript.tsdk": "./node_modules/typescript/lib"
+      }
+    }
+  }
+}
