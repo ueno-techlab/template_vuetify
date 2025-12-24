@@ -8,8 +8,8 @@
       <v-spacer />
 
       <template v-if="isAuthenticated">
-        <v-btn :to="'/dashboard'" variant="text">
-          ダッシュボード
+        <v-btn :to="'/users'" variant="text">
+          ユーザー管理
         </v-btn>
 
         <v-menu>
