@@ -1,14 +1,15 @@
 # Template Vuetify
 
-Vue3 + Nuxt3 + TypeScript + Vuetify のフロントエンドテンプレートです。
+Vue3 + Nuxt4 + TypeScript + Vuetify のフロントエンドテンプレートです。
 
 ## 技術スタック
 
-- **Vue 3** - プログレッシブJavaScriptフレームワーク
-- **Nuxt 3** - Vueメタフレームワーク（SPAモード）
-- **TypeScript** - 静的型付け
-- **Vuetify 3** - マテリアルデザインコンポーネント
-- **Pinia** - 状態管理
+- **Vue 3.5** - プログレッシブJavaScriptフレームワーク
+- **Nuxt 4** - Vueメタフレームワーク（SPAモード）
+- **TypeScript 5** - 静的型付け
+- **Vuetify 3.11** - マテリアルデザインコンポーネント
+- **Pinia 3** - 状態管理
+- **ESLint 9** - コード品質（flat config）
 - **Docker** - コンテナ化開発環境
 
 ## クイックスタート
@@ -58,18 +59,25 @@ npm run dev
 
 ## ディレクトリ構成
 
+Nuxt 4の推奨構造に従い、アプリケーションコードは`app/`ディレクトリに配置しています。
+
 ```
-├── app.vue           # ルートコンポーネント
-├── assets/           # 静的アセット（コンパイル対象）
-│   └── styles/       # SCSS/CSSファイル
-├── components/       # 再利用可能コンポーネント
-├── composables/      # Composition API関数
-├── layouts/          # レイアウトコンポーネント
-├── pages/            # ルーティングページ
-├── plugins/          # Nuxtプラグイン
-├── public/           # 静的ファイル（そのまま配信）
-├── stores/           # Piniaストア
-└── types/            # TypeScript型定義
+├── app/                  # アプリケーションコード
+│   ├── app.vue           # ルートコンポーネント
+│   ├── assets/           # 静的アセット（コンパイル対象）
+│   │   └── styles/       # SCSS/CSSファイル
+│   ├── components/       # 再利用可能コンポーネント
+│   ├── composables/      # Composition API関数
+│   ├── layouts/          # レイアウトコンポーネント
+│   ├── middleware/       # ルートミドルウェア
+│   ├── pages/            # ルーティングページ
+│   ├── plugins/          # Nuxtプラグイン
+│   ├── stores/           # Piniaストア
+│   └── types/            # TypeScript型定義
+├── public/               # 静的ファイル（そのまま配信）
+├── nuxt.config.ts        # Nuxt設定
+├── eslint.config.mjs     # ESLint設定（flat config）
+└── tsconfig.json         # TypeScript設定
 ```
 
 ## ドキュメント

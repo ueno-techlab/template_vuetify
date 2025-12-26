@@ -27,18 +27,25 @@
 
 ## ディレクトリ構造
 
+Nuxt 4では`app/`ディレクトリにアプリケーションコードを配置します。
+
 ```
-├── app.vue           # ルートコンポーネント
-├── assets/           # 静的アセット（コンパイル対象）
-│   └── styles/       # SCSS/CSSファイル
-├── components/       # 再利用可能コンポーネント
-├── composables/      # Composition API関数
-├── layouts/          # レイアウトコンポーネント
-├── pages/            # ルーティングページ
-├── plugins/          # Nuxtプラグイン
-├── public/           # 静的ファイル（そのまま配信）
-├── stores/           # Piniaストア
-└── types/            # TypeScript型定義
+├── app/                  # アプリケーションコード
+│   ├── app.vue           # ルートコンポーネント
+│   ├── assets/           # 静的アセット（コンパイル対象）
+│   │   └── styles/       # SCSS/CSSファイル
+│   ├── components/       # 再利用可能コンポーネント
+│   ├── composables/      # Composition API関数
+│   ├── layouts/          # レイアウトコンポーネント
+│   ├── middleware/       # ルートミドルウェア
+│   ├── pages/            # ルーティングページ
+│   ├── plugins/          # Nuxtプラグイン
+│   ├── stores/           # Piniaストア
+│   └── types/            # TypeScript型定義
+├── public/               # 静的ファイル（そのまま配信）
+├── nuxt.config.ts        # Nuxt設定
+├── eslint.config.mjs     # ESLint設定（flat config）
+└── tsconfig.json         # TypeScript設定
 ```
 
 ## 開発フロー
@@ -46,9 +53,9 @@
 ### 1. 新しいページの追加
 
 ```bash
-# pages/ディレクトリにファイルを作成
+# app/pages/ディレクトリにファイルを作成
 # ファイル名がそのままルートになる
-pages/
+app/pages/
 ├── index.vue      # /
 ├── about.vue      # /about
 └── users/
@@ -90,7 +97,7 @@ const emit = defineEmits<{
 ### 3. Piniaストアの使用
 
 ```typescript
-// stores/counter.ts
+// app/stores/counter.ts
 export const useCounterStore = defineStore('counter', {
   state: () => ({
     count: 0,
@@ -102,7 +109,7 @@ export const useCounterStore = defineStore('counter', {
   },
 })
 
-// pages/index.vue
+// app/pages/index.vue
 const counterStore = useCounterStore()
 counterStore.increment()
 ```
@@ -110,7 +117,7 @@ counterStore.increment()
 ### 4. Composableの作成
 
 ```typescript
-// composables/useCounter.ts
+// app/composables/useCounter.ts
 export function useCounter(initialValue = 0) {
   const count = ref(initialValue)
 

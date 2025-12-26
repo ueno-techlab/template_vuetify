@@ -4,16 +4,17 @@
 
 ## 概要
 
-このテンプレートは、Vue3 + Nuxt3をベースとしたSPA（Single Page Application）として設計されています。
+このテンプレートは、Vue3 + Nuxt4をベースとしたSPA（Single Page Application）として設計されています。
 
 ## 技術選定理由
 
-### Nuxt 3（SPAモード）
+### Nuxt 4（SPAモード）
 
 - ファイルベースルーティング
 - 自動インポート機能
 - モジュールエコシステム
 - 開発体験の向上
+- 新しい`app/`ディレクトリ構造による起動高速化
 
 ### Vuetify 3
 
@@ -37,13 +38,28 @@
 {
   ssr: false,           // SPAモード
   modules: [
-    'vuetify-nuxt-module',
     '@pinia/nuxt',
+    'vuetify-nuxt-module',
+    '@nuxt/eslint',     // ESLint統合
   ],
   typescript: {
     strict: true,       // 厳密な型チェック
+    typeCheck: true,    // ビルド時型チェック
   },
 }
+```
+
+### eslint.config.mjs（ESLint 9 flat config）
+
+```javascript
+import withNuxt from './.nuxt/eslint.config.mjs'
+import prettierRecommended from 'eslint-plugin-prettier/recommended'
+
+export default withNuxt(prettierRecommended, {
+  rules: {
+    // カスタムルール
+  },
+})
 ```
 
 ### TypeScript設定

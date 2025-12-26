@@ -12,7 +12,7 @@
 
 ### ローカル環境（DevContainerを使わない場合）
 
-- Node.js 22.x 以上
+- Node.js 22.x 以上（package.jsonのenginesで指定）
 - npm 10.x 以上
 
 ## 環境構築
