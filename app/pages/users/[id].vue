@@ -120,7 +120,8 @@ const userId = Number(route.params.id)
 
 const emailRules = [
   (v: string) => !!v || 'メールアドレスを入力してください',
-  (v: string) => /.+@.+\..+/.test(v) || 'メールアドレスの形式が正しくありません',
+  (v: string) =>
+    /.+@.+\..+/.test(v) || 'メールアドレスの形式が正しくありません',
 ]
 
 const passwordRules = [

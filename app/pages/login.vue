@@ -25,8 +25,8 @@
               :rules="passwordRules"
               :disabled="loading"
               :append-inner-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
-              @click:append-inner="showPassword = !showPassword"
               required
+              @click:append-inner="showPassword = !showPassword"
             />
 
             <v-alert
@@ -82,7 +82,8 @@ const errorMessage = ref('')
 // Validation rules matching OpenAPI spec
 const emailRules = [
   (v: string) => !!v || 'メールアドレスを入力してください',
-  (v: string) => /.+@.+\..+/.test(v) || 'メールアドレスの形式が正しくありません',
+  (v: string) =>
+    /.+@.+\..+/.test(v) || 'メールアドレスの形式が正しくありません',
 ]
 
 const passwordRules = [
@@ -104,7 +105,7 @@ const handleLogin = async () => {
 
     const redirectPath = (route.query.redirect as string) || '/'
     await router.push(redirectPath)
-  } catch (error: unknown) {
+  } catch {
     errorMessage.value = 'メールアドレスまたはパスワードが正しくありません'
   } finally {
     loading.value = false

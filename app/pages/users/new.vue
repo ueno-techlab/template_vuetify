@@ -9,7 +9,11 @@
           </v-card-title>
 
           <v-card-text>
-            <v-form ref="formRef" v-model="valid" @submit.prevent="handleSubmit">
+            <v-form
+              ref="formRef"
+              v-model="valid"
+              @submit.prevent="handleSubmit"
+            >
               <v-text-field
                 v-model="email"
                 label="メールアドレス"
@@ -26,8 +30,8 @@
                 :rules="passwordRules"
                 :disabled="loading"
                 :append-inner-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
-                @click:append-inner="showPassword = !showPassword"
                 required
+                @click:append-inner="showPassword = !showPassword"
               />
 
               <v-text-field
@@ -93,7 +97,8 @@ const showPassword = ref(false)
 
 const emailRules = [
   (v: string) => !!v || 'メールアドレスを入力してください',
-  (v: string) => /.+@.+\..+/.test(v) || 'メールアドレスの形式が正しくありません',
+  (v: string) =>
+    /.+@.+\..+/.test(v) || 'メールアドレスの形式が正しくありません',
 ]
 
 const passwordRules = [
@@ -123,7 +128,8 @@ const handleSubmit = async () => {
 
     await router.push('/users')
   } catch (e) {
-    error.value = 'ユーザーの作成に失敗しました。メールアドレスが既に使用されている可能性があります。'
+    error.value =
+      'ユーザーの作成に失敗しました。メールアドレスが既に使用されている可能性があります。'
     console.error('Failed to create user:', e)
   } finally {
     loading.value = false

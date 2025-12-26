@@ -3,77 +3,10 @@ import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
   // SPAモード（SSR無効化）
-  ssr: false,
-
-  // 開発ツール
-  devtools: { enabled: true },
 
   // モジュール
-  modules: [
-    [
-      '@pinia/nuxt',
-      {
-        storesDirs: ['./stores/**'],
-      },
-    ],
-    [
-      'vuetify-nuxt-module',
-      {
-        // treeshaking有効化
-        treeshaking: true,
-        // スタイル設定
-        styles: {
-          configFile: 'assets/styles/vuetify-settings.scss',
-        },
-        // Vuetifyオプション
-        vuetifyOptions: {
-          theme: {
-            defaultTheme: 'light',
-            themes: {
-              light: {
-                dark: false,
-                colors: {
-                  primary: '#1976D2',
-                  secondary: '#424242',
-                  accent: '#82B1FF',
-                  error: '#FF5252',
-                  info: '#2196F3',
-                  success: '#4CAF50',
-                  warning: '#FB8C00',
-                },
-              },
-            },
-          },
-          defaults: {
-            VBtn: {
-              variant: 'flat',
-            },
-            VTextField: {
-              variant: 'outlined',
-              density: 'comfortable',
-            },
-          },
-        },
-      },
-    ],
-  ],
-
-  // TypeScript設定
-  typescript: {
-    strict: true,
-    typeCheck: true,
-  },
-
-  // ランタイム設定
-  runtimeConfig: {
-    // サーバーサイドのみ（SPAでは使用しない）
-    apiSecret: '',
-    // クライアントサイドに公開
-    public: {
-      apiBase: '',
-      appName: 'Template Vuetify',
-    },
-  },
+  modules: ['@pinia/nuxt', 'vuetify-nuxt-module', '@nuxt/eslint'],
+  ssr: false,
 
   // アプリ設定
   app: {
@@ -82,20 +15,18 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Vue3 + Nuxt3 + Vuetify Template' },
+        { name: 'description', content: 'Vue3 + Nuxt4 + Vuetify Template' },
       ],
       link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     },
   },
 
-  // Vite設定
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          api: 'modern-compiler',
-        },
-      },
+  // ランタイム設定
+  runtimeConfig: {
+    apiSecret: '',
+    public: {
+      apiBase: '',
+      appName: 'Template Vuetify',
     },
   },
 
@@ -106,5 +37,67 @@ export default defineNuxtConfig({
   },
 
   // 互換性日付
-  compatibilityDate: '2024-12-01',
+  compatibilityDate: '2025-01-01',
+
+  // Vite設定
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          // @ts-expect-error Vite 6のSCSS API設定
+          api: 'modern-compiler',
+        },
+      },
+    },
+  },
+
+  // TypeScript設定
+  typescript: {
+    strict: true,
+    typeCheck: true,
+  },
+
+  // ESLint設定
+  eslint: {
+    config: {
+      stylistic: true,
+    },
+  },
+
+  // Pinia設定
+  pinia: {
+    storesDirs: ['./app/stores/**'],
+  },
+
+  // Vuetify設定
+  vuetify: {
+    vuetifyOptions: {
+      theme: {
+        defaultTheme: 'light',
+        themes: {
+          light: {
+            dark: false,
+            colors: {
+              primary: '#1976D2',
+              secondary: '#424242',
+              accent: '#82B1FF',
+              error: '#FF5252',
+              info: '#2196F3',
+              success: '#4CAF50',
+              warning: '#FB8C00',
+            },
+          },
+        },
+      },
+      defaults: {
+        VBtn: {
+          variant: 'flat',
+        },
+        VTextField: {
+          variant: 'outlined',
+          density: 'comfortable',
+        },
+      },
+    },
+  },
 })

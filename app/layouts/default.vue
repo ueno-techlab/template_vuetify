@@ -8,9 +8,7 @@
       <v-spacer />
 
       <template v-if="isAuthenticated">
-        <v-btn :to="'/users'" variant="text">
-          ユーザー管理
-        </v-btn>
+        <v-btn :to="'/users'" variant="text"> ユーザー管理 </v-btn>
 
         <v-menu>
           <template #activator="{ props }">
@@ -31,9 +29,7 @@
       </template>
 
       <template v-else>
-        <v-btn :to="'/login'" variant="text">
-          ログイン
-        </v-btn>
+        <v-btn :to="'/login'" variant="text"> ログイン </v-btn>
       </template>
     </v-app-bar>
 

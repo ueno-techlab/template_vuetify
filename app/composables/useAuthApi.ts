@@ -58,7 +58,7 @@ export const useAuthApi = () => {
 
   // Delete user
   const deleteUser = async (id: number): Promise<void> => {
-    return apiFetch<void>(`/users/${id}`, {
+    await apiFetch(`/users/${id}`, {
       method: 'DELETE',
     })
   }

@@ -78,9 +78,7 @@
       <v-card>
         <v-card-title>ユーザーの削除</v-card-title>
         <v-card-text>
-          <p>
-            以下のユーザーを削除しますか？この操作は取り消せません。
-          </p>
+          <p>以下のユーザーを削除しますか？この操作は取り消せません。</p>
           <p class="mt-2 font-weight-bold">
             {{ userToDelete?.name || userToDelete?.email }}
           </p>
@@ -159,7 +157,9 @@ const handleDelete = async () => {
   try {
     deleting.value = true
     await deleteUser(userToDelete.value.id)
-    users.value = users.value.filter((u) => u.id !== userToDelete.value?.id)
+    users.value = users.value.filter(
+      (u: User) => u.id !== userToDelete.value?.id
+    )
     deleteDialog.value = false
     userToDelete.value = null
   } catch (e) {
